@@ -13,6 +13,7 @@ public class Create(IMediator _mediator)
     {
         Post(CreatePromoCodeRequest.Route);
         AllowAnonymous();
+        Version(1);
         Summary(s =>
         {
             s.Summary = "Create a new Promo Code.";

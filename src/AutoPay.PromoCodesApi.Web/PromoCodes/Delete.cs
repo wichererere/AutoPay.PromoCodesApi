@@ -15,6 +15,7 @@ public class Delete(IMediator _mediator)
     {
         Delete(DeletePromoCodeRequest.Route);
         AllowAnonymous();
+        Version(1);
     }
 
     public override async Task HandleAsync(

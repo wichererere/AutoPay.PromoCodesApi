@@ -15,6 +15,7 @@ public class List(IMediator _mediator) : EndpointWithoutRequest<PromoCodeListRes
     {
         Get("/PromoCodes");
         AllowAnonymous();
+        Version(1);
     }
 
     public override async Task HandleAsync(CancellationToken cancellationToken)

@@ -15,6 +15,7 @@ public class Update(IMediator _mediator)
     {
         Put(UpdatePromoCodeRequest.Route);
         AllowAnonymous();
+        Version(1);
     }
 
     public override async Task HandleAsync(

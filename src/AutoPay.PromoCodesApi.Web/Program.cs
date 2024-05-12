@@ -20,7 +20,17 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 builder.Services.AddHealthChecks();
 
 builder.Services.AddFastEndpoints()
-    .SwaggerDocument(o => { o.ShortSchemaNames = true; });
+  .SwaggerDocument(o =>
+  {
+    o.MaxEndpointVersion = 1;
+    o.ShortSchemaNames = true;
+    o.DocumentSettings = s =>
+    {
+      s.DocumentName = "Release 1.0";
+      s.Title = "AutoPay PromoCodes API";
+      s.Version = "v1.0";
+    };
+  });
 
 ConfigureMediatR();
 
@@ -45,8 +55,11 @@ else
     app.UseHsts();
 }
 
-app.UseFastEndpoints()
-    .UseSwaggerGen(); // Includes AddFileServer and static files middleware
+app.UseFastEndpoints(c =>
+  {
+    c.Versioning.Prefix = "v";
+    c.Versioning.PrependToRoute = true;
+  }).UseSwaggerGen(); // Includes AddFileServer and static files middleware
 
 app.MapHealthChecks("health");
 

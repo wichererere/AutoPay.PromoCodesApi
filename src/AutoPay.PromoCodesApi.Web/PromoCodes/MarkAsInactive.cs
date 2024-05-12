@@ -15,6 +15,7 @@ public class MarkAsInactive(IMediator _mediator)
   {
     Put(MarkAsInactiveRequest.Route);
     AllowAnonymous();
+    Version(1);
   }
 
   public override async Task HandleAsync(

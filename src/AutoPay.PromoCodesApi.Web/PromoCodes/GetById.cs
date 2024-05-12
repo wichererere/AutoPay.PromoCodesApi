@@ -15,6 +15,7 @@ public class GetById(IMediator _mediator)
     {
         Get(GetPromoCodeByIdRequest.Route);
         AllowAnonymous();
+        Version(1);
     }
 
     public override async Task HandleAsync(GetPromoCodeByIdRequest request,
