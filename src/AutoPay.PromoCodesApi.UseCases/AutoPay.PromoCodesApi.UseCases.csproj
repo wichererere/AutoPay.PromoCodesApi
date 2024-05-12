@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="Ardalis.Result"/>
+        <PackageReference Include="MediatR"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AutoPay.PromoCodesApi.Core\AutoPay.PromoCodesApi.Core.csproj"/>
+    </ItemGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>AutoPay.PromoCodesApi.UnitTests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>
