@@ -1,0 +1,39 @@
+networks:
+  backend:
+
+services:
+  promocodesapi:
+    build:
+      context: .
+      target: development
+    ports:
+      - 50000:8080
+    depends_on:
+      mssqldb:
+       condition: service_healthy
+    develop:
+     watch:
+       - action: rebuild
+         path: .
+    environment:
+     - ConnectionStrings__SqlServer=Server=${MSSQL_HOST};database=${MSSQL_NAME};User Id=sa;Password=${MSSQL_PASSWORD};TrustServerCertificate=true
+     - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - backend
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  mssqldb:
+   image: mcr.microsoft.com/mssql/server:2022-latest
+   restart: always
+   environment:
+     MSSQL_SA_PASSWORD: "${MSSQL_PASSWORD}"
+     ACCEPT_EULA: "Y"
+   ports:
+     - "5434:1433"
+   healthcheck:
+     test: "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P '${MSSQL_PASSWORD}' -Q 'SELECT 1'"
+     interval: 10s
+     timeout: 5s
+     retries: 5
+   networks:
+     - backend

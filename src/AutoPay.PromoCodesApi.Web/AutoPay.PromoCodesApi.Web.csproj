@@ -33,4 +33,8 @@
         <ProjectReference Include="..\Migrations\AutoPay.PromoCodesApi.SqlServer\AutoPay.PromoCodesApi.SqlServer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="v1\" />
+    </ItemGroup>
+
 </Project>

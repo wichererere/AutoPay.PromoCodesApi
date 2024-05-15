@@ -5,8 +5,7 @@ public static class InfrastructureServiceExtensions
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services,
         IConfiguration config,
-        ILogger logger,
-        bool isDevelopment)
+        ILogger logger)
     {
       RegisterDependencies(services);
       RegisterEF(services, config);

@@ -6,7 +6,6 @@ global using Ardalis.HttpClientTestExtensions;
 global using AutoPay.PromoCodesApi.Infrastructure.Data;
 global using AutoPay.PromoCodesApi.Infrastructure.Data.Config.Providers;
 global using AutoPay.PromoCodesApi.Web;
-global using AutoPay.PromoCodesApi.Web.PromoCodes;
 global using FluentAssertions;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;

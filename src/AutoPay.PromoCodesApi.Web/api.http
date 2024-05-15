@@ -41,3 +41,9 @@ Content-Type: application/json
 @id_to_delete=1
 DELETE {{host}}:{{port}}/PromoCodes/{{id_to_delete}}
 
+###
+
+// Mark as inactive
+@id_to_mark_as_invactive=1
+PUT {{host}}:{{port}}/PromoCodes/{{id_to_mark_as_invactive}}/MarkAsInactive
+

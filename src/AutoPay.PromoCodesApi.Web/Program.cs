@@ -35,7 +35,7 @@ builder.Services.AddFastEndpoints()
 ConfigureMediatR();
 
 builder.Services.AddCoreServices(microsoftLogger);
-builder.Services.AddInfrastructureServices(builder.Configuration, microsoftLogger, builder.Environment.IsDevelopment());
+builder.Services.AddInfrastructureServices(builder.Configuration, microsoftLogger);
 
 if (builder.Environment.IsDevelopment())
 {
@@ -59,6 +59,7 @@ app.UseFastEndpoints(c =>
   {
     c.Versioning.Prefix = "v";
     c.Versioning.PrependToRoute = true;
+    c.Versioning.DefaultVersion = 1;
   }).UseSwaggerGen(); // Includes AddFileServer and static files middleware
 
 app.MapHealthChecks("health");
@@ -77,6 +78,7 @@ static void SeedDatabase(WebApplication app)
     try
     {
         var context = services.GetRequiredService<AppDbContext>();
+        
         context.Database.Migrate();
         context.Database.EnsureCreated();
         SeedData.Initialize(services);

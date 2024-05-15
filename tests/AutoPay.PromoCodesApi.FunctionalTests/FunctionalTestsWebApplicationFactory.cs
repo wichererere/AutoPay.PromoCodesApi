@@ -1,4 +1,6 @@
-﻿namespace AutoPay.PromoCodesApi.FunctionalTests;
+﻿using DotNet.Testcontainers.Builders;
+
+namespace AutoPay.PromoCodesApi.FunctionalTests;
 
 public class FunctionalTestsWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
