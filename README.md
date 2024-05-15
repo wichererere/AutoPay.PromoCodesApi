@@ -34,7 +34,11 @@ Before you can run the application, make sure you have the following installed:
    ```bash
    dotnet build
 
-5. Start the application by running:
+5. Run tests:
+   ```bash
+   dotnet test
+
+6. Start the application by running:
    ```bash
    dotnet run --project src/AutoPay.PromoCodesApi.Web
 
