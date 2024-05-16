@@ -1,20 +1,21 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
 @host=https://localhost
 @port=57679
+@version=v1
 
 // List all promo codes
-GET {{host}}:{{port}}/PromoCodes
+GET {{host}}:{{port}}/{{version}}/PromoCodes
 
 ###
 
 // Get a specific promo code
 @id_to_get=1
-GET {{host}}:{{port}}/PromoCodes/{{id_to_get}}
+GET {{host}}:{{port}}/{{version}}/PromoCodes/{{id_to_get}}
 
 ###
 
 // Add a new promo code
-POST {{host}}:{{port}}/PromoCodes
+POST {{host}}:{{port}}/{{version}}/PromoCodes
 Content-Type: application/json
 
 {
@@ -27,7 +28,7 @@ Content-Type: application/json
 
 // Update a promo code
 @id_to_update=1
-PUT {{host}}:{{port}}/PromoCodes/{{id_to_update}}
+PUT {{host}}:{{port}}/{{version}}/PromoCodes/{{id_to_update}}
 Content-Type: application/json
 
 {
@@ -39,11 +40,11 @@ Content-Type: application/json
 
 // Delete a promo code
 @id_to_delete=1
-DELETE {{host}}:{{port}}/PromoCodes/{{id_to_delete}}
+DELETE {{host}}:{{port}}/{{version}}/PromoCodes/{{id_to_delete}}
 
 ###
 
 // Mark as inactive
 @id_to_mark_as_invactive=1
-PUT {{host}}:{{port}}/PromoCodes/{{id_to_mark_as_invactive}}/MarkAsInactive
+PUT {{host}}:{{port}}/{{version}}/PromoCodes/{{id_to_mark_as_invactive}}/MarkAsInactive
 
