@@ -1,4 +1,6 @@
-﻿var logger = Log.Logger = new LoggerConfiguration()
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+var logger = Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .WriteTo.Console()
     .CreateLogger();
@@ -6,6 +8,9 @@
 logger.Information("Starting web host");
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+builder.Services.AddAuthorization();
 
 builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
 var microsoftLogger = new SerilogLoggerFactory(logger)
@@ -30,6 +35,7 @@ builder.Services.AddFastEndpoints()
       s.Title = "AutoPay PromoCodes API";
       s.Version = "v1.0";
     };
+    o.EnableJWTBearerAuth = true;
   });
 
 ConfigureMediatR();
@@ -54,6 +60,9 @@ else
     app.UseDefaultExceptionHandler(); // from FastEndpoints
     app.UseHsts();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseFastEndpoints(c =>
   {

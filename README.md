@@ -50,7 +50,9 @@ Before you can run the application, make sure you have the following installed:
 
 2. Start the application by running:
    ```bash
-   docker compose run
+   docker compose up
+   
+3. Wait till project starts and go [here](http://localhost:50000/swagger)
    
 ## Used technologies
-.NET8, Sqlite, SqlServer, Docker, Clean Architecture, MediatR, CQRS, EF Core, FastEndpoints, FluentValidation xunit, TestContainers, FluentAssertions, NSubstitute, testhost
+.NET8, Sqlite, SqlServer, Docker, Clean Architecture, MediatR, CQRS, EF Core, FastEndpoints, FluentValidation, xunit, TestContainers, FluentAssertions, NSubstitute, testhost
