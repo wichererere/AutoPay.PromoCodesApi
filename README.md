@@ -42,6 +42,8 @@ Before you can run the application, make sure you have the following installed:
    ```bash
    dotnet run --project src/AutoPay.PromoCodesApi.Web
 
+7. Wait till project starts and go [here](http://localhost:57679/swagger)
+
 ### Dockerize
 
 1. Change to the project directory:
