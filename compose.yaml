@@ -18,10 +18,17 @@ services:
     environment:
      - ConnectionStrings__SqlServer=Server=${MSSQL_HOST};database=${MSSQL_NAME};User Id=sa;Password=${MSSQL_PASSWORD};TrustServerCertificate=true
      - ASPNETCORE_ENVIRONMENT=Development
+     - TESTCONTAINERS_HOST_OVERRIDE=host.docker.internal
     networks:
       - backend
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
   mssqldb:
    image: mcr.microsoft.com/mssql/server:2022-latest
    restart: always

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-var logger = Log.Logger = new LoggerConfiguration()
+﻿var logger = Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .WriteTo.Console()
     .CreateLogger();
@@ -25,6 +23,7 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 builder.Services.AddHealthChecks();
 
 builder.Services.AddFastEndpoints()
+  .AddResponseCaching()
   .SwaggerDocument(o =>
   {
     o.MaxEndpointVersion = 1;
@@ -69,7 +68,9 @@ app.UseFastEndpoints(c =>
     c.Versioning.Prefix = "v";
     c.Versioning.PrependToRoute = true;
     c.Versioning.DefaultVersion = 1;
-  }).UseSwaggerGen(); // Includes AddFileServer and static files middleware
+  })
+  .UseResponseCaching()
+  .UseSwaggerGen(); // Includes AddFileServer and static files middleware
 
 app.MapHealthChecks("health");
 

@@ -1,4 +1,5 @@
-﻿global using System.ComponentModel.DataAnnotations;
+﻿global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using System.ComponentModel.DataAnnotations;
 global using System.Reflection;
 global using Ardalis.ListStartupServices;
 global using Ardalis.Result;

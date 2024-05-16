@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+RUN apt-get update && apt-get install -y curl
 ARG TARGETARCH
 COPY . /source
 WORKDIR /source/src

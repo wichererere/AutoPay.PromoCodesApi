@@ -54,7 +54,14 @@ Before you can run the application, make sure you have the following installed:
    ```bash
    docker compose up
    
-3. Wait till project starts and go [here](http://localhost:50000/swagger)
+3. Run tests inside Docker container (Optionally):
+    ```bash
+    docker compose run --build --rm promocodesapi dotnet test /source
+   
+4. Wait till project starts and go [here](http://localhost:50000/swagger)
+
+
+
    
 ## Used technologies
 .NET8, Sqlite, SqlServer, Docker, Clean Architecture, MediatR, CQRS, EF Core, FastEndpoints, FluentValidation, xunit, TestContainers, FluentAssertions, NSubstitute, testhost
